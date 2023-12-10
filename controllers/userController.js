@@ -33,4 +33,24 @@ module.exports = {
         .json({ message: error + "user not found", status: false });
     }
   },
+
+  updateUser: async (req, res) => {
+    const userID = req.user.id;
+
+    try {
+      const updatedUser = await User.findByIdAndUpdate(
+        userID,
+        { $set: req.body },
+        { new: true }
+      );
+
+      res
+        .status(200)
+        .json({ message: `${updatedUser} updated successfully`, status: true });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: error + "user not found", status: false });
+    }
+  },
 };

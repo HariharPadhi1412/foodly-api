@@ -6,6 +6,7 @@ const app = express();
 const port = 4000;
 
 const authRoute = require("./routes/auth");
+const userRoute = require("./routes/user");
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ mongoose
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", authRoute);
+app.use("/api/users", userRoute);
 app.listen(process.env.PORT || port, () =>
   console.log(`listening on port number ${process.env.PORT}`)
 );
