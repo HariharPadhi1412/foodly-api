@@ -17,4 +17,20 @@ module.exports = {
         .json({ message: error + "user not found", status: false });
     }
   },
+
+  deleteUser: async (req, res) => {
+    const userID = req.user.id;
+
+    try {
+      await User.findByIdAndDelete(userID);
+
+      res
+        .status(200)
+        .json({ message: "user deleted successfully", status: true });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: error + "user not found", status: false });
+    }
+  },
 };
