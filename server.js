@@ -7,6 +7,7 @@ const port = 4000;
 
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/user");
+const restaturantRoute = require("./routes/restaurant");
 
 dotenv.config();
 
@@ -26,6 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", authRoute);
 app.use("/api/users", userRoute);
+app.use("/api/  ", restaturantRoute);
 app.listen(process.env.PORT || port, () =>
-  console.log(`listening on port number ${process.env.PORT}`)
+  console.log(`listening on port number ${process.env.PORT}`),
 );
